@@ -1,8 +1,20 @@
 /*
- * Copyright (c) 2019 - Felipe Desiderati ALL RIGHTS RESERVED.
+ * Copyright (c) 2019 - Felipe Desiderati
  *
- * This software is protected by international copyright laws and cannot be
- * used, copied, stored or distributed without prior authorization.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+ * associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial
+ * portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+ * LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +23,7 @@ import java.util.stream.IntStream;
 public class CreditCardMask {
 
     public static void main(String[] args) {
+
         String log = "{'name':'Maria Rosa','phone':'12378921821','address':'R: João Rodrigues'," +
             "'amount':120.03,'creditcard':{'number':'123456777774321'}},{creditcard:123456789012345678}";
 

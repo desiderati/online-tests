@@ -16,35 +16,36 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-public class RoundingRules {
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public static void main(String[] args) {
-        System.out.println(roundPayment(50));
-        System.out.println(roundPayment(51));
-        System.out.println(roundPayment(74));
-        System.out.println(roundPayment(75));
-        System.out.println(roundPayment(99));
-        System.out.println(roundPayment(100));
-        System.out.println(roundPayment(5524));
-        System.out.println(roundPayment(5525));
-        System.out.println(roundPayment(5549));
-        System.out.println(roundPayment(5550));
-        System.out.println(roundPayment(5574));
-        System.out.println(roundPayment(5575));
-        System.out.println(roundPayment(5599));
-        System.out.println(roundPayment(5600));
+public class LuckyFloorNumber {
+
+    // Complete the getLuckyFloorNumber function below.
+    static int getLuckyFloorNumber(int n) {
+        int luckyFloor = 0;
+        for (int i = 0; i < n; i++) {
+            luckyFloor++;
+            while (String.valueOf(luckyFloor).contains("4") || String.valueOf(luckyFloor).contains("13")) {
+                luckyFloor++;
+            }
+        }
+        return luckyFloor;
     }
 
-    private static int roundPayment(int payment) {
-        int mod = payment % 100;
-        int round;
-        if (mod <= 24) {
-            round = 0;
-        } else if (mod <= 74) {
-            round = 50;
-        } else {
-            round = 100;
-        }
-        return ((payment / 100) * 100) + round;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+        int res = getLuckyFloorNumber(n);
+
+        bufferedWriter.write(String.valueOf(res));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
     }
 }

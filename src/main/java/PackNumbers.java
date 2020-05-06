@@ -16,35 +16,41 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-public class RoundingRules {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
-    public static void main(String[] args) {
-        System.out.println(roundPayment(50));
-        System.out.println(roundPayment(51));
-        System.out.println(roundPayment(74));
-        System.out.println(roundPayment(75));
-        System.out.println(roundPayment(99));
-        System.out.println(roundPayment(100));
-        System.out.println(roundPayment(5524));
-        System.out.println(roundPayment(5525));
-        System.out.println(roundPayment(5549));
-        System.out.println(roundPayment(5550));
-        System.out.println(roundPayment(5574));
-        System.out.println(roundPayment(5575));
-        System.out.println(roundPayment(5599));
-        System.out.println(roundPayment(5600));
+public class PackNumbers {
+
+    // Complete the packNumbers function below.
+    static List<String> packNumbers(List<Integer> arr) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            Integer item = arr.get(i);
+
+            int numSibling = 1;
+            for (int j = i+1; j < arr.size(); j++) {
+                Integer nextItem = arr.get(j);
+                if (item.equals(nextItem)) {
+                    numSibling++;
+                    i++;
+                } else {
+                    break;
+                }
+            }
+
+            if (numSibling == 1) {
+                result.add(String.valueOf(item));
+            } else {
+                result.add(item + ":" + numSibling);
+            }
+        }
+        return result;
     }
 
-    private static int roundPayment(int payment) {
-        int mod = payment % 100;
-        int round;
-        if (mod <= 24) {
-            round = 0;
-        } else if (mod <= 74) {
-            round = 50;
-        } else {
-            round = 100;
-        }
-        return ((payment / 100) * 100) + round;
+    public static void main(String[] args) {
+        Integer[] arr = new Integer[]{255, 255, 67, 12, 12, 12, 36, 89, 89, 54, 2, 12, 36, 36, 36};
+        System.out.println(packNumbers(Arrays.asList(arr)));
     }
 }
